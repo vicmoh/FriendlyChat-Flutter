@@ -1,4 +1,6 @@
 //https://codelabs.developers.google.com/codelabs/flutter/#3
+//https://codelabs.developers.google.com/codelabs/flutter/#8
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -6,11 +8,26 @@ void main(){
 }//end main
 
 class FriendlyChatApp extends StatelessWidget{
+  //instanecc
+  final ThemeData kIOSTheme = new ThemeData(
+    primarySwatch: Colors.orange,
+    primaryColor: Colors.grey[100],
+    primaryColorBrightness: Brightness.light
+  );
+  final ThemeData kDefaultTheme = new ThemeData(
+    primarySwatch: Colors.purple,
+    accentColor: Colors.orangeAccent[100]
+  );
+
   @override Widget build(BuildContext context){
     print("app build");
     var title = "Firendly Chat";
     var chatScreen = new ChatScreen();
-    var page = new MaterialApp(title: title, home: chatScreen);
+    var page = new MaterialApp(
+      title: title, 
+      home: chatScreen,
+      theme: defaultTargetPlatform == TargetPlatform.iOS ? kIOSTheme : kDefaultTheme,
+    );
     return page;
   }//end overide
 }//end class
